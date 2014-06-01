@@ -1,0 +1,14 @@
+{
+    "name" : "cnam/gitlab_api",
+    "description" : "Sdk for integration gitlab api",
+    "minimum-stability": "beta",
+    "authors": [
+        {
+            "name": "Anton Popov",
+            "email": "cnam812@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "4.*"
+    }
+}
