@@ -8,7 +8,10 @@
             "email": "cnam812@gmail.com"
         }
     ],
+    "autoload": {
+        "classmap": ["vendor/", "src/"]
+    },
     "require": {
-        "guzzlehttp/guzzle": "4.*"
+        "guzzlehttp/guzzle": "3.8.1"
     }
 }
