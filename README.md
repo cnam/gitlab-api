@@ -9,34 +9,47 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-$client = new \Gitlab\Core\HttpClient('http://gitlab.v3.com/v3', 'your_secret_key', ['user', 'password']);
+$request_options = array(
+    "request.options" => array(
+        "verify" => false,
+        'auth' => array('login', 'pass'),
+        'query' => array(
+            'private_token' => 'You_secret_key'
+        ),
+    )
+);
 
-$projects = new \Gitlab\Api\Projects($client);
+$api = new Gitlab\Api($request_options);
 
-/**
- * list all projects
- */
+$issues = $api->executeCommand('GetIssues');
 
-foreach ($projects->all() as $project) {
-    var_dump($project);
+foreach ($issues as $issue) {
+    echo($issue->getId().' '.$issue->getTitle()).PHP_EOL;
 }
 
-$issues = new \Gitlab\Api\Issue($client);
 
-/**
- * list all issues
- */
+echo 'GetIssuesByProject'.PHP_EOL;
 
-foreach ($issues->all() as $issue) {
-    var_dump($issue);
+$issues = $api->executeCommand('GetIssuesByProject', array('project_id' => 10));
+
+foreach ($issues as $issue) {
+    echo($issue->getId().' '.$issue->getTitle()).PHP_EOL;
 }
 
-$projectId = 1;
+echo 'GetIssue'.PHP_EOL;
 
-var_dump($issues->allByProject($projectId));
+$issue = $api->executeCommand('GetIssue', array('project_id' => 10,'issue_id'=>58));
 
-foreach ($issues->allByProject($projectId) as $issue) {
-    var_dump($issue);
+echo($issue->getId().' '.$issue->getTitle()).PHP_EOL;
+
+
+$projects = $api->executeCommand('GetProjects');
+
+foreach ($projects as $project) {
+    /**
+     * @var $project \Gitlab\Models\Project
+     */
+    echo($project->getId() . " " . $project->getNameWithNamespace()).PHP_EOL;
 }
 
 ```

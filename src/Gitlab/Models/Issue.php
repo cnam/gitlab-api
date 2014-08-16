@@ -1,65 +1,47 @@
 <?php
+namespace Gitlab\Models;
 
-namespace Gitlab\Entity;
+use Guzzle\Service\Command\ResponseClassInterface;
+use Guzzle\Service\Command\OperationCommand;
 
-
-class Issue
+class Issue implements ResponseClassInterface
 {
-    const STATE_OPENED = 'opened';
-    const STATE_CLOSED = 'closed';
-    const STATE_REOPENED = 'reopened';
+
+    protected $id;
+    protected $iid;
+    protected $title;
+    protected $project_id;
+    protected $description;
+    protected $labels;
+    protected $milestone;
+    protected $assignee;
+    protected $author;
+    protected $state;
+    protected $updated_at;
+    protected $created_at;
+
+    public static function fromCommand(OperationCommand $command)
+    {
+        $response = $command->getResponse();
+        $item = $response->json();
+
+        return new self($item);
+    }
+
+    public function __construct(array $item)
+    {
+        foreach ($item as $name => $content) {
+            $this->{$name} = $content;
+        }
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
     /**
-     * @var int
-     */
-    private $id;
-    /**
-     * @var int
-     */
-    private $iid;
-    /**
-     * @var int
-     */
-    private $project_id;
-    /**
-     * @var string
-     */
-    private $title;
-    /**
-     * @var string
-     */
-    private $description;
-    /**
-     * @var array
-     */
-    private $labels;
-    /**
-     * @var \Gitlab\Entity\Milestone
-     */
-    private $milestone;
-    /**
-     * @var \Gitlab\Entity\User
-     */
-    private $assignee;
-    /**
-     * @var \Gitlab\Entity\User
-     */
-    private $author;
-    /**
-     * @var string
-     */
-    private $state;
-    /**
-     * @var \DateTime
-     */
-    private $updated_at;
-    /**
-     * @var \DateTime
-     */
-    private $created_at;
-
-    /**
-     * @return User
+     * @return mixed
      */
     public function getAssignee()
     {
@@ -67,7 +49,7 @@ class Issue
     }
 
     /**
-     * @param User $assignee
+     * @param mixed $assignee
      */
     public function setAssignee($assignee)
     {
@@ -75,7 +57,7 @@ class Issue
     }
 
     /**
-     * @return User
+     * @return mixed
      */
     public function getAuthor()
     {
@@ -83,7 +65,7 @@ class Issue
     }
 
     /**
-     * @param User $author
+     * @param mixed $author
      */
     public function setAuthor($author)
     {
@@ -91,7 +73,7 @@ class Issue
     }
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
     public function getCreatedAt()
     {
@@ -99,7 +81,7 @@ class Issue
     }
 
     /**
-     * @param \DateTime $created_at
+     * @param mixed $created_at
      */
     public function setCreatedAt($created_at)
     {
@@ -107,7 +89,7 @@ class Issue
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getDescription()
     {
@@ -115,7 +97,7 @@ class Issue
     }
 
     /**
-     * @param string $description
+     * @param mixed $description
      */
     public function setDescription($description)
     {
@@ -123,7 +105,7 @@ class Issue
     }
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
@@ -131,7 +113,7 @@ class Issue
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
     public function setId($id)
     {
@@ -139,7 +121,7 @@ class Issue
     }
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getIid()
     {
@@ -147,7 +129,7 @@ class Issue
     }
 
     /**
-     * @param int $iid
+     * @param mixed $iid
      */
     public function setIid($iid)
     {
@@ -155,7 +137,7 @@ class Issue
     }
 
     /**
-     * @return array
+     * @return mixed
      */
     public function getLabels()
     {
@@ -163,7 +145,7 @@ class Issue
     }
 
     /**
-     * @param array $labels
+     * @param mixed $labels
      */
     public function setLabels($labels)
     {
@@ -171,7 +153,7 @@ class Issue
     }
 
     /**
-     * @return Milestone
+     * @return mixed
      */
     public function getMilestone()
     {
@@ -179,7 +161,7 @@ class Issue
     }
 
     /**
-     * @param Milestone $milestone
+     * @param mixed $milestone
      */
     public function setMilestone($milestone)
     {
@@ -187,7 +169,23 @@ class Issue
     }
 
     /**
-     * @return int
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
      */
     public function getProjectId()
     {
@@ -195,7 +193,7 @@ class Issue
     }
 
     /**
-     * @param int $project_id
+     * @param mixed $project_id
      */
     public function setProjectId($project_id)
     {
@@ -203,7 +201,7 @@ class Issue
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getState()
     {
@@ -211,7 +209,7 @@ class Issue
     }
 
     /**
-     * @param string $state
+     * @param mixed $state
      */
     public function setState($state)
     {
@@ -219,23 +217,7 @@ class Issue
     }
 
     /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @return \DateTime
+     * @return mixed
      */
     public function getUpdatedAt()
     {
@@ -243,11 +225,11 @@ class Issue
     }
 
     /**
-     * @param \DateTime $updated_at
+     * @param mixed $updated_at
      */
     public function setUpdatedAt($updated_at)
     {
         $this->updated_at = $updated_at;
     }
 
-} 
+}

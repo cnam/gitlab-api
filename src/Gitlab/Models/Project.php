@@ -1,128 +1,84 @@
 <?php
+namespace Gitlab\Models;
 
-namespace Gitlab\Entity;
+use Guzzle\Service\Command\ResponseClassInterface;
+use Guzzle\Service\Command\OperationCommand;
 
-
-class Project
+class Project implements ResponseClassInterface
 {
-    /**
-     * @var int
-     */
-    private $id;
 
-    /**
-     * @var string
-     */
-    private $name;
+    protected $id;
+    protected $description;
+    protected $default_branch;
+    protected $public;
+    protected $visible_level;
+    protected $ssh_url_to_repo;
+    protected $http_url_to_repo;
+    protected $web_url;
+    protected $owner;
+    protected $name;
+    protected $name_with_namespace;
+    protected $path;
+    protected $path_with_namespace;
+    protected $wiki_enabled;
+    protected $merge_request_enabled;
+    protected $issues_enabled;
+    protected $snippets_enabled;
+    protected $created_at;
+    protected $last_activity_at;
+    protected $namespace;
+    protected $permissions;
+    protected $archive;
 
-    /**
-     * @var string
-     */
-    private $name_with_namespace;
-
-    /**
-     * @var array
-     */
-    private $namespace;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $path;
-
-    /**
-     * @var string
-     */
-    private $path_with_namespace;
-
-    /**
-     * @var string
-     */
-    private $ssh_url_to_repo;
-
-    /**
-     * @var string
-     */
-    private $http_url_to_repo;
-
-    /**
-     * @var string
-     */
-    private $web_url;
-
-    /**
-     * @var array
-     */
-    private $owner;
-
-    /**
-     * @var bool
-     */
-    private $public;
-
-    /**
-     * @var string
-     */
-    private $default_branch;
-
-    /**
-     * @var bool
-     */
-    private $issue_enabled;
-
-    /**
-     * @var bool
-     */
-    private $merge_request_enabled;
-
-    /**
-     * @var bool
-     */
-    private $wall_enabled;
-
-    /**
-     * @var bool
-     */
-    private $wiki_enabled;
-
-    /**
-     * @var \DateTime
-     */
-    private $create_at;
-
-    /**
-     * @var \DateTime
-     */
-    private $last_activity_at;
-
-    /**
-     * @var bool
-     */
-    private $snippets_enabled;
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreateAt()
+    public static function fromCommand(OperationCommand $command)
     {
-        return $this->create_at;
+        $response = $command->getResponse();
+        $item = $response->json();
+
+        return new self($item);
+    }
+
+    public function __construct(array $item)
+    {
+        foreach ($item as $name => $content) {
+            $this->{$name} = $content;
+        }
     }
 
     /**
-     * @param \DateTime $create_at
+     * @return mixed
      */
-    public function setCreateAt($create_at)
+    public function getArchive()
     {
-        $this->create_at = $create_at;
+        return $this->archive;
     }
 
     /**
-     * @return string
+     * @param mixed $archive
+     */
+    public function setArchive($archive)
+    {
+        $this->archive = $archive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param mixed $created_at
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * @return mixed
      */
     public function getDefaultBranch()
     {
@@ -130,7 +86,7 @@ class Project
     }
 
     /**
-     * @param string $default_branch
+     * @param mixed $default_branch
      */
     public function setDefaultBranch($default_branch)
     {
@@ -138,7 +94,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getDescription()
     {
@@ -146,7 +102,7 @@ class Project
     }
 
     /**
-     * @param string $description
+     * @param mixed $description
      */
     public function setDescription($description)
     {
@@ -154,7 +110,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getHttpUrlToRepo()
     {
@@ -162,7 +118,7 @@ class Project
     }
 
     /**
-     * @param string $http_url_to_repo
+     * @param mixed $http_url_to_repo
      */
     public function setHttpUrlToRepo($http_url_to_repo)
     {
@@ -170,7 +126,7 @@ class Project
     }
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
@@ -178,7 +134,7 @@ class Project
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
     public function setId($id)
     {
@@ -186,23 +142,23 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isIssueEnabled()
+    public function getIssuesEnabled()
     {
-        return $this->issue_enabled;
+        return $this->issues_enabled;
     }
 
     /**
-     * @param boolean $issue_enabled
+     * @param mixed $issues_enabled
      */
-    public function setIssueEnabled($issue_enabled)
+    public function setIssuesEnabled($issues_enabled)
     {
-        $this->issue_enabled = $issue_enabled;
+        $this->issues_enabled = $issues_enabled;
     }
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
     public function getLastActivityAt()
     {
@@ -210,7 +166,7 @@ class Project
     }
 
     /**
-     * @param \DateTime $last_activity_at
+     * @param mixed $last_activity_at
      */
     public function setLastActivityAt($last_activity_at)
     {
@@ -218,15 +174,15 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isMergeRequestEnabled()
+    public function getMergeRequestEnabled()
     {
         return $this->merge_request_enabled;
     }
 
     /**
-     * @param boolean $merge_request_enabled
+     * @param mixed $merge_request_enabled
      */
     public function setMergeRequestEnabled($merge_request_enabled)
     {
@@ -234,7 +190,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getName()
     {
@@ -242,7 +198,7 @@ class Project
     }
 
     /**
-     * @param string $name
+     * @param mixed $name
      */
     public function setName($name)
     {
@@ -250,7 +206,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getNameWithNamespace()
     {
@@ -258,7 +214,7 @@ class Project
     }
 
     /**
-     * @param string $name_with_namespace
+     * @param mixed $name_with_namespace
      */
     public function setNameWithNamespace($name_with_namespace)
     {
@@ -266,7 +222,7 @@ class Project
     }
 
     /**
-     * @return array
+     * @return mixed
      */
     public function getNamespace()
     {
@@ -274,7 +230,7 @@ class Project
     }
 
     /**
-     * @param array $namespace
+     * @param mixed $namespace
      */
     public function setNamespace($namespace)
     {
@@ -282,7 +238,7 @@ class Project
     }
 
     /**
-     * @return array
+     * @return mixed
      */
     public function getOwner()
     {
@@ -290,7 +246,7 @@ class Project
     }
 
     /**
-     * @param array $owner
+     * @param mixed $owner
      */
     public function setOwner($owner)
     {
@@ -298,7 +254,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getPath()
     {
@@ -306,7 +262,7 @@ class Project
     }
 
     /**
-     * @param string $path
+     * @param mixed $path
      */
     public function setPath($path)
     {
@@ -314,7 +270,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getPathWithNamespace()
     {
@@ -322,7 +278,7 @@ class Project
     }
 
     /**
-     * @param string $path_with_namespace
+     * @param mixed $path_with_namespace
      */
     public function setPathWithNamespace($path_with_namespace)
     {
@@ -330,15 +286,31 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isPublic()
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
+
+    /**
+     * @param mixed $permissions
+     */
+    public function setPermissions($permissions)
+    {
+        $this->permissions = $permissions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublic()
     {
         return $this->public;
     }
 
     /**
-     * @param boolean $public
+     * @param mixed $public
      */
     public function setPublic($public)
     {
@@ -346,15 +318,15 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isSnippetsEnabled()
+    public function getSnippetsEnabled()
     {
         return $this->snippets_enabled;
     }
 
     /**
-     * @param boolean $snippets_enabled
+     * @param mixed $snippets_enabled
      */
     public function setSnippetsEnabled($snippets_enabled)
     {
@@ -362,7 +334,7 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getSshUrlToRepo()
     {
@@ -370,7 +342,7 @@ class Project
     }
 
     /**
-     * @param string $ssh_url_to_repo
+     * @param mixed $ssh_url_to_repo
      */
     public function setSshUrlToRepo($ssh_url_to_repo)
     {
@@ -378,23 +350,23 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isWallEnabled()
+    public function getVisibleLevel()
     {
-        return $this->wall_enabled;
+        return $this->visible_level;
     }
 
     /**
-     * @param boolean $wall_enabled
+     * @param mixed $visible_level
      */
-    public function setWallEnabled($wall_enabled)
+    public function setVisibleLevel($visible_level)
     {
-        $this->wall_enabled = $wall_enabled;
+        $this->visible_level = $visible_level;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getWebUrl()
     {
@@ -402,7 +374,7 @@ class Project
     }
 
     /**
-     * @param string $web_url
+     * @param mixed $web_url
      */
     public function setWebUrl($web_url)
     {
@@ -410,18 +382,20 @@ class Project
     }
 
     /**
-     * @return boolean
+     * @return mixed
      */
-    public function isWikiEnabled()
+    public function getWikiEnabled()
     {
         return $this->wiki_enabled;
     }
 
     /**
-     * @param boolean $wiki_enabled
+     * @param mixed $wiki_enabled
      */
     public function setWikiEnabled($wiki_enabled)
     {
         $this->wiki_enabled = $wiki_enabled;
     }
+
+
 }
