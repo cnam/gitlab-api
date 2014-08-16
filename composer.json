@@ -1,5 +1,5 @@
 {
-    "name" : "cnam/gitlab_api",
+    "name" : "cnam/gitlab-api",
     "description" : "Sdk for integration gitlab api",
     "minimum-stability": "beta",
     "authors": [
@@ -9,7 +9,9 @@
         }
     ],
     "autoload": {
-        "classmap": ["vendor/", "src/"]
+        "psr-4" : {
+            "Gitlab\\" : "src/Gitlab/"
+        }
     },
     "require": {
         "guzzlehttp/guzzle": "3.8.1"
