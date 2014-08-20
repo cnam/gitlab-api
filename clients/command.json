@@ -1,7 +1,6 @@
 {
     "name": "Gitlab Issue Api Client",
     "apiVersion": "2014-08-12",
-    "baseUrl": "https://git.nethouse.ru/api/v3",
     "description": "Клиент для доступа к gitlab issue",
     "operations": {
         "GetIssues": {
