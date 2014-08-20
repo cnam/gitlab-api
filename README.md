@@ -10,6 +10,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 $request_options = array(
+    "base_url" => "http://gitlab.com/api/v3",
     "request.options" => array(
         "verify" => false,
         'auth' => array('login', 'pass'),

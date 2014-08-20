@@ -72,4 +72,9 @@ class IssueList implements ResponseClassInterface, \ArrayAccess, \Iterator
     {
         $this->pointer = 0;
     }
+
+    public function count()
+    {
+        return count($this->storage);
+    }
 }
