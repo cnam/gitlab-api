@@ -7,7 +7,15 @@
         "GetIssues": {
             "httpMethod": "GET",
             "uri": "issues",
-            "responseClass": "Gitlab\\Models\\IssueList"
+            "responseClass": "Gitlab\\Models\\IssueList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
         },
         "GetIssuesByProject": {
             "httpMethod": "GET",
@@ -17,6 +25,12 @@
                 "project_id": {
                     "location": "uri",
                     "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
                 }
             }
         },
@@ -125,17 +139,41 @@
         "GetProjects": {
             "httpMethod": "GET",
             "uri": "projects",
-            "responseClass": "Gitlab\\Models\\ProjectList"
+            "responseClass": "Gitlab\\Models\\ProjectList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
         },
         "GetProjectsAll": {
             "httpMethod": "GET",
             "uri": "projects/all",
-            "responseClass": "Gitlab\\Models\\ProjectList"
+            "responseClass": "Gitlab\\Models\\ProjectList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
         },
         "GetProjectsOwned": {
             "httpMethod": "GET",
-            "uri": "projects/Owned",
-            "responseClass": "Gitlab\\Models\\ProjectList"
+            "uri": "projects/оwned",
+            "responseClass": "Gitlab\\Models\\ProjectList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
         },
         "GetProject": {
             "httpMethod": "GET",
@@ -156,6 +194,12 @@
                 "project_id": {
                     "location": "uri",
                     "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
                 }
             }
         },
@@ -269,6 +313,25 @@
                     "required": true
                 }
             }
-        }
+        },
+        "GetSession": {
+            "httpMethod": "POST",
+            "uri": "/session",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "login": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "email": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "password": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
     }
 }
