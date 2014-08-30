@@ -132,6 +132,11 @@
                 "issue_id": {
                     "location": "uri",
                     "required": true
+                },
+                "closed": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
                 }
             }
         },
