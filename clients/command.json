@@ -395,6 +395,30 @@
                     "type": "string"
                 }
             }
+        },
+        "GetUsers": {
+            "httpMethod": "GET",
+            "uri": "users",
+            "responseClass": "Gitlab\\Models\\UserList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "GetUser": {
+            "httpMethod": "GET",
+            "uri": "users/{user_id}",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "user_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
         }
     }
 }

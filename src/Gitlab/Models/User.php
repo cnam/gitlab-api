@@ -21,6 +21,7 @@ class User implements ResponseClassInterface
     protected $linkedin;
     protected $twitter;
     protected $website_url;
+    protected $avatar_url;
     /**
      * @var bool
      */
