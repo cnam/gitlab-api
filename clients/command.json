@@ -133,7 +133,7 @@
                     "location": "uri",
                     "required": true
                 },
-                "closed": {
+                "state_event": {
                     "location": "json",
                     "type": "string",
                     "required": true
