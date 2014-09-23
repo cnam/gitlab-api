@@ -318,6 +318,100 @@
                 }
             }
         },
+        "GetProjectMembers": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/members",
+            "responseClass": "Gitlab\\Models\\UserList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "GetProjectMember": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/members/{user_id}",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "AddProjectMember": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/members",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "json",
+                    "type" : "string",
+                    "required": true
+                },
+                "access_level": {
+                    "location": "json",
+                    "type" : "string",
+                    "required": true
+                }
+            }
+        },
+        "EditProjectMember": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/members/{user_id}",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "access_level": {
+                    "location": "json",
+                    "type" : "string",
+                    "required": true
+                }
+            }
+        },
+        "DeleteProjectMember": {
+            "httpMethod": "DELETE",
+            "uri": "projects/{project_id}/members/{user_id}",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
         "GetSession": {
             "httpMethod": "POST",
             "uri": "session",
