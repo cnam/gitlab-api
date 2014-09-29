@@ -157,7 +157,7 @@ class Issue implements ResponseClassInterface
      */
     public function getMilestone()
     {
-        return $this->milestone;
+        return new Milestone($this->milestone);
     }
 
     /**
