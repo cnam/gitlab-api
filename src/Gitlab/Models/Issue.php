@@ -157,7 +157,11 @@ class Issue implements ResponseClassInterface
      */
     public function getMilestone()
     {
-        return new Milestone($this->milestone);
+        if (is_array($this->milestone)) {
+            $this->milestone = new Milestone($this->milestone);
+        }
+
+        return $this->milestone;
     }
 
     /**
