@@ -13,6 +13,12 @@
                 },
                 "page": {
                     "location": "query"
+                },
+                "state": {
+                    "location": "query"
+                },
+                "labels": {
+                    "location": "query"
                 }
             }
         },
@@ -29,6 +35,12 @@
                     "location": "query"
                 },
                 "page": {
+                    "location": "query"
+                },
+                "state": {
+                    "location": "query"
+                },
+                "labels": {
                     "location": "query"
                 }
             }
