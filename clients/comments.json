@@ -1,0 +1,63 @@
+{
+    "operations": {
+        "GetComments": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/issues/{issue_id}/notes",
+            "responseClass": "Gitlab\\Models\\CommentList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "issue_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "GetComment": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/issues/{issue_id}/notes/{comment_id}",
+            "responseClass": "Gitlab\\Models\\Comment",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "issue_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "comment_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateComment": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/issues/{issue_id}/notes",
+            "responseClass": "Gitlab\\Models\\Comment",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "issue_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "body": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

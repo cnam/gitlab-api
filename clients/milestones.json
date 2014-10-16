@@ -1,0 +1,120 @@
+{
+    "operations": {
+        "GetMilestones": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/milestones",
+            "responseClass": "Gitlab\\Models\\MilestoneList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "GetMilestone": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/milestones/{milestone_id}",
+            "responseClass": "Gitlab\\Models\\Milestone",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "milestone_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "CreateMilestone": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/milestones",
+            "responseClass": "Gitlab\\Models\\Milestone",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "title": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "description": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "due_date": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+            }
+        },
+        "EditMilestone": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/milestones/{milestone_id}",
+            "responseClass": "Gitlab\\Models\\Milestone",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "milestone_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "title": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "description": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "due_date": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "state_event": {
+                    "location": "json",
+                    "type": "string"
+                }
+
+            }
+        },
+        "DeleteMilestone": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/milestones/{milestone_id}",
+            "responseClass": "Gitlab\\Models\\Milestone",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "milestone_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "state_event": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,122 @@
+{
+    "operations": {
+        "GetGroups": {
+            "httpMethod": "GET",
+            "uri": "groups",
+            "responseClass": "Gitlab\\Models\\GroupList",
+            "parameters": {
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "GetGroup": {
+            "httpMethod": "GET",
+            "uri": "groups/{group_id}",
+            "responseClass": "Gitlab\\Models\\Group",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateGroup": {
+            "httpMethod": "POST",
+            "uri": "groups",
+            "responseClass": "Gitlab\\Models\\Group",
+            "parameters": {
+                "name" : {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "path" : {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                }
+            }
+        },
+        "TransferProjectToGroup": {
+            "httpMethod": "POST",
+            "uri": "groups/{group_id}/projects/{project_id}",
+            "responseClass": "Gitlab\\Models\\Group",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "DeleteGroup": {
+            "httpMethod": "DELETE",
+            "uri": "groups/{group_id}",
+            "responseClass": "Gitlab\\Models\\Group",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "GetGroupMembers": {
+            "httpMethod": "GET",
+            "uri": "groups/{group_id}/members",
+            "responseClass": "Gitlab\\Models\\UserList",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
+        },
+        "AddGroupMember": {
+            "httpMethod": "POST",
+            "uri": "groups/{group_id}/members",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "json",
+                    "required": true
+                },
+                "access_level": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+        "DeleteGroupMember": {
+            "httpMethod": "DELETE",
+            "uri": "groups/{group_id}/members/{user_id}",
+            "responseClass": "Gitlab\\Models\\User",
+            "parameters": {
+                "group_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        }
+    }
+}
