@@ -62,10 +62,14 @@ class Project implements ResponseClassInterface
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
+        if (! $this->created_at instanceof \DateTime) {
+            $this->created_at = new \DateTime($this->created_at);
+        }
+
         return $this->created_at;
     }
 
@@ -158,10 +162,14 @@ class Project implements ResponseClassInterface
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getLastActivityAt()
     {
+        if (! $this->last_activity_at instanceof \DateTime) {
+            $this->last_activity_at = new \DateTime($this->last_activity_at);
+        }
+
         return $this->last_activity_at;
     }
 

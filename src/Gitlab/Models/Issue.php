@@ -73,10 +73,14 @@ class Issue implements ResponseClassInterface
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
+        if (! $this->created_at instanceof \DateTime) {
+            $this->created_at = new \DateTime($this->created_at);
+        }
+
         return $this->created_at;
     }
 
@@ -221,10 +225,14 @@ class Issue implements ResponseClassInterface
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
+        if (! $this->updated_at instanceof \DateTime) {
+            $this->updated_at = new \DateTime($this->updated_at);
+        }
+
         return $this->updated_at;
     }
 
