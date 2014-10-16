@@ -25,7 +25,6 @@ class Api
         $this->client = new Client($request_options['base_url']);
         $this->client->setDescription($description);
         $this->client->setConfig($request_options);
-        var_export($this->client->getDescription());
     }
 
     /**
