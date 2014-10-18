@@ -8,7 +8,8 @@
         "groups.json",
         "users.json",
         "comments.json",
-        "labels.json"
+        "labels.json",
+        "milestones.json"
     ]
 }
 
