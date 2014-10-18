@@ -114,5 +114,4 @@ class Comment implements ResponseClassInterface
     {
         $this->id = $id;
     }
-
 }

@@ -1,0 +1,75 @@
+{
+    "operations": {
+        "GetLabels": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/labels",
+            "responseClass": "Gitlab\\Models\\LabelList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "CreateLabel": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/labels",
+            "responseClass": "Gitlab\\Models\\label",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "name": {
+                    "location": "json",
+                    "required": true,
+                    "type" : "string"
+                },
+                "color": {
+                    "location": "json",
+                    "type" : "string"
+                }
+            }
+        },
+        "DeleteLabel": {
+            "httpMethod": "DELETE",
+            "uri": "projects/{project_id}/label",
+            "responseClass": "Gitlab\\Models\\label",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "name": {
+                    "location": "json",
+                    "required": true,
+                    "type" : "string"
+                }
+            }
+        },
+        "EditLabel": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/label",
+            "responseClass": "Gitlab\\Models\\label",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "name": {
+                    "location": "json",
+                    "required": true,
+                    "type" : "string"
+                },
+                "new_name": {
+                    "location": "json",
+                    "type" : "string"
+                },
+                "color": {
+                    "location": "json",
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}
