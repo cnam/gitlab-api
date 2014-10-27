@@ -350,7 +350,21 @@ class User implements ResponseClassInterface
     {
         $this->website_url = $website_url;
     }
+   
+    /**
+     * @return mixed
+     */
+    public function getAvatarUrl()
+    {
+        return $this->avatar_url;
+    }
 
-
+    /**
+     * @param string $avatar_url
+     */
+    public function setAvatarUrl($avatar_url)
+    {
+	$this->avatar_url = $avatar_url;
+    }
 
 }
