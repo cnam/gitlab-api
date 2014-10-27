@@ -12,7 +12,7 @@ class BaseModel implements ResponseClassInterface
         $response = $command->getResponse();
         $item = $response->json();
 
-        return new self($item);
+        return new static($item);
     }
 
     public function __construct(array $item)

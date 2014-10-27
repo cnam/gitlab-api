@@ -16,7 +16,7 @@ class BaseList implements ResponseClassInterface, \ArrayAccess, \Iterator
         $response = $command->getResponse();
         $items = $response->json();
 
-        return new self($items);
+        return new static($items);
     }
 
     public function offsetExists($offset)
