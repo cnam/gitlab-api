@@ -14,7 +14,7 @@
         "CreateLabel": {
             "httpMethod": "POST",
             "uri": "projects/{project_id}/labels",
-            "responseClass": "Gitlab\\Models\\label",
+            "responseClass": "Gitlab\\Models\\Label",
             "parameters": {
                 "project_id": {
                     "location": "uri",
@@ -34,7 +34,7 @@
         "DeleteLabel": {
             "httpMethod": "DELETE",
             "uri": "projects/{project_id}/label",
-            "responseClass": "Gitlab\\Models\\label",
+            "responseClass": "Gitlab\\Models\\Label",
             "parameters": {
                 "project_id": {
                     "location": "uri",
@@ -50,7 +50,7 @@
         "EditLabel": {
             "httpMethod": "PUT",
             "uri": "projects/{project_id}/label",
-            "responseClass": "Gitlab\\Models\\label",
+            "responseClass": "Gitlab\\Models\\Label",
             "parameters": {
                 "project_id": {
                     "location": "uri",
