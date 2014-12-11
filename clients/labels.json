@@ -27,6 +27,7 @@
                 },
                 "color": {
                     "location": "json",
+                    "required": true,
                     "type" : "string"
                 }
             }
