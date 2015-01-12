@@ -55,7 +55,32 @@
                 },
                 "body": {
                     "location": "json",
-                    "type": "string"
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "EditComment": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/issues/{issue_id}/notes/{comment_id}",
+            "responseClass": "Gitlab\\Models\\Comment",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "issue_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "comment_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "body": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
                 }
             }
         }
