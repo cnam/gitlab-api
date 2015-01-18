@@ -1,0 +1,86 @@
+{
+    "operations" : {
+        "GetAuthUrl": {
+            "httpMethod": "GET",
+            "uri": "/oauth/authorize",
+            "parameters": {
+                "client_id": {
+                    "location": "query",
+                    "require": true
+                },
+                "redirect_uri": {
+                    "location": "query",
+                    "require": true
+                },
+                "response_type": {
+                    "location": "query",
+                    "default": "code"
+                }
+            }
+        },
+
+        "GetAuthToken": {
+            "httpMethod": "POST",
+            "uri": "/oauth/token",
+            "parameters": {
+                "client_id": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "client_secret": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "code": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "redirect_uri": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "grant_type": {
+                    "type": "string",
+                    "location": "json",
+                    "default": "authorization_code"
+                }
+            }
+        },
+
+        "AuthRefreshToken": {
+            "httpMethod": "POST",
+            "uri": "/oauth/token",
+            "parameters": {
+                "client_id": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "client_secret": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "redirect_uri": {
+                    "type": "string",
+                    "location": "json",
+                    "require": true
+                },
+                "grant_type": {
+                    "type": "string",
+                    "location": "json",
+                    "default": "authorization_code"
+                }
+            }
+        }
+    }
+}

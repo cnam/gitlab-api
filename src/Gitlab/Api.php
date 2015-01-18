@@ -28,6 +28,51 @@ class Api
     }
 
     /**
+     * @param $config
+     */
+    public function setAccessToken($config)
+    {
+        $oauth2Plugin = new \Gitlab\Oauth2\Plugin($this, $config);
+        $this->client->addSubscriber($oauth2Plugin);
+    }
+
+    /**
+     * @return string
+     *
+     * @throws \Exception
+     */
+    public function getAuthUrl()
+    {
+        if (! $oauthConfig = $this->client->getConfig("oauth2")) {
+            throw new \Exception('OAuth2 authorisation not registered');
+        }
+
+        $command = $this->client->getCommand('GetAuthUrl', (array) $oauthConfig)->prepare();
+        return $command->getUrl();
+    }
+
+    /**
+     * @param $code
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function getTokens($code)
+    {
+        if (! $oauthConfig = $this->client->getConfig("oauth2")) {
+            throw new \Exception('OAuth2 authorisation not registered');
+        }
+
+        $tokens = $this->executeCommand('GetAuthToken',
+            array_merge((array) $oauthConfig, array(
+                    'code' => $code
+                )
+            ));
+
+        return $tokens;
+    }
+
+    /**
      * @param       $command
      * @param array $arguments
      *

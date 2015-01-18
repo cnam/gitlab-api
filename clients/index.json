@@ -11,7 +11,8 @@
         "labels.json",
         "milestones.json",
         "merge_requests.json",
-        "repositories.json"
+        "repositories.json",
+        "oauth.json"
     ]
 }
 
