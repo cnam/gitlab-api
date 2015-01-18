@@ -29,14 +29,14 @@
 
         "GetMergeRequest": {
             "httpMethod": "GET",
-            "uri": "projects/{project_id}/merge_requests/{merge_requests_id}",
+            "uri": "projects/{project_id}/merge_request/{merge_request_id}",
             "responseClass": "Gitlab\\Models\\MergeRequest",
             "parameters": {
                 "project_id": {
                     "location": "uri",
                     "required": true
                 },
-                "merge_requests_id": {
+                "merge_request_id": {
                     "location": "uri",
                     "required": true
                 }
@@ -78,16 +78,16 @@
             }
         },
 
-        "CreateMergeRequest": {
+        "UpdateMergeRequest": {
             "httpMethod": "PUT",
-            "uri": "projects/{project_id}/merge_requests/{merge_request_id}",
+            "uri": "projects/{project_id}/merge_request/{merge_request_id}",
             "responseClass": "Gitlab\\Models\\MergeRequest",
             "parameters": {
                 "project_id": {
                     "location": "uri",
                     "required": true
                 },
-                "merge_requests_id": {
+                "merge_request_id": {
                     "location": "uri",
                     "required": true
                 },
@@ -120,14 +120,14 @@
 
         "AcceptMergeRequest": {
             "httpMethod": "PUT",
-            "uri": "projects/{project_id}/merge_requests/{merge_request_id}/merge",
+            "uri": "projects/{project_id}/merge_request/{merge_request_id}/merge",
             "responseClass": "Gitlab\\Models\\MergeRequest",
             "parameters": {
                 "project_id": {
                     "location": "uri",
                     "required": true
                 },
-                "merge_requests_id": {
+                "merge_request_id": {
                     "location": "uri",
                     "required": true
                 },

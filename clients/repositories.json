@@ -1,0 +1,23 @@
+{
+    "operations": {
+        "CompareBranch": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/repository/compare",
+            "responseClass": "Gitlab\\Models\\CompareBranch",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "require": true
+                },
+                "from": {
+                    "location": "query",
+                    "require": true
+                },
+                "to": {
+                    "location": "query",
+                    "require": true
+                }
+            }
+        }
+    }
+}

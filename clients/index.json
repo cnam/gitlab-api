@@ -10,7 +10,8 @@
         "comments.json",
         "labels.json",
         "milestones.json",
-        "merge_requests.json"
+        "merge_requests.json",
+        "repositories.json"
     ]
 }
 
