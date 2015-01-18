@@ -83,6 +83,49 @@
                     "required": true
                 }
             }
+        },
+
+        "CreateCommentForMergeRequest" : {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/merge_request/{merge_request_id}/comments",
+            "responseClass": "Gitlab\\Models\\MergeRequestComment",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_request_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "note": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+
+        "GetCommentsForMergeRequest": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/merge_request/{merge_request_id}/comments",
+            "responseClass": "Gitlab\\Models\\MergeRequestCommentList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_request_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                }
+            }
         }
     }
 }

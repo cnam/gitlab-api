@@ -1,0 +1,141 @@
+{
+    "operations": {
+        "GetMergeRequests": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/merge_requests",
+            "responseClass": "Gitlab\\Models\\MergeRequestList",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "per_page": {
+                    "location": "query"
+                },
+                "page": {
+                    "location": "query"
+                },
+                "state": {
+                    "location": "query"
+                },
+                "order_by": {
+                    "location": "query"
+                },
+                "sort": {
+                    "location": "query"
+                }
+            }
+        },
+
+        "GetMergeRequest": {
+            "httpMethod": "GET",
+            "uri": "projects/{project_id}/merge_requests/{merge_requests_id}",
+            "responseClass": "Gitlab\\Models\\MergeRequest",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_requests_id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+
+        "CreateMergeRequest": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/merge_requests",
+            "responseClass": "Gitlab\\Models\\MergeRequest",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "title": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "source_branch": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "target_branch": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "assignee_id": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "target_project_id": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+
+        "CreateMergeRequest": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/merge_requests/{merge_request_id}",
+            "responseClass": "Gitlab\\Models\\MergeRequest",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_requests_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "title": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "source_branch": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "target_branch": {
+                    "location": "json",
+                    "required": true,
+                    "type": "string"
+                },
+                "assignee_id": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "state_event": {
+                    "location": "json",
+                    "type": "string",
+                    "pattern": "^(close|reopen|merge)$"
+                }
+            }
+        },
+
+        "AcceptMergeRequest": {
+            "httpMethod": "PUT",
+            "uri": "projects/{project_id}/merge_requests/{merge_request_id}/merge",
+            "responseClass": "Gitlab\\Models\\MergeRequest",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_requests_id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "merge_commit_message": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
