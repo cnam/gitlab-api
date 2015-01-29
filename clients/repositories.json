@@ -18,6 +18,27 @@
                     "require": true
                 }
             }
+        },
+        "CreateBranch": {
+            "httpMethod": "POST",
+            "uri": "projects/{project_id}/repository/branches",
+            "responseClass": "Gitlab\\Models\\Branch",
+            "parameters": {
+                "project_id": {
+                    "location": "uri",
+                    "require": true
+                },
+                "branch_name": {
+                    "location": "json",
+                    "type": "string",
+                    "require": true
+                },
+                "ref": {
+                    "location": "json",
+                    "type": "string",
+                    "require": true
+                }
+            }
         }
     }
 }
