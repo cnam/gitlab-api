@@ -22,7 +22,7 @@ class Api
     public function __construct($request_options)
     {
         $description = ServiceDescription::factory(__DIR__."/../../clients/index.json");
-        $this->client = new Client($request_options['base_url']);
+        $this->client = new Client($request_options['base_url'].'/api/v3');
         $this->client->setDescription($description);
         $this->client->setConfig($request_options);
     }
