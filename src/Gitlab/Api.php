@@ -25,6 +25,9 @@ class Api
         $this->client = new Client($request_options['base_url']);
         $this->client->setDescription($description);
         $this->client->setConfig($request_options);
+
+        $tokenPlugin = new \Gitlab\Auth\Token\Plugin($this, $request_options);
+        $this->client->addSubscriber($tokenPlugin);
     }
 
     /**
@@ -32,7 +35,7 @@ class Api
      */
     public function setAccessToken($config)
     {
-        $oauth2Plugin = new \Gitlab\Oauth2\Plugin($this, $config);
+        $oauth2Plugin = new \Gitlab\Auth\Oauth2\Plugin($this, $config);
         $this->client->addSubscriber($oauth2Plugin);
     }
 

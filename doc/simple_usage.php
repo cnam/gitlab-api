@@ -3,13 +3,19 @@
 require __DIR__.'/../vendor/autoload.php';
 
 $request_options = array(
-    "base_url" => "http://gitlab.com/api/v3",
+    "base_url" => "https://gitlab.com/api/v3",
     "request.options" => array(
         "verify" => false,
-        'auth' => array('login', 'pass'),
-        'query' => array(
-            'private_token' => 'You_secret_key'
-        ),
+        // basic auth
+        "auth" => ['LOGIN', 'PASSSWORD'],
+    ),
+    // private user token for usage api
+    "private_token" => 'PRIVATE_USER_TOKEN',
+    // oauth 2 for usage api
+    "oauth2" => array(
+        "client_id" => 'CLIENT_ID',
+        "client_secret" => 'CLIENT_SECRET',
+        "redirect_uri"  => 'REDIRECT_URL'
     )
 );
 
