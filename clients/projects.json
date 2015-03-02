@@ -10,6 +10,18 @@
                 },
                 "page": {
                     "location": "query"
+                },
+                "order_by": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "search": {
+                    "location": "query",
+                    "type": "string"
                 }
             }
         },
@@ -23,6 +35,18 @@
                 },
                 "page": {
                     "location": "query"
+                },
+                "order_by": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "search": {
+                    "location": "query",
+                    "type": "string"
                 }
             }
         },
@@ -36,6 +60,18 @@
                 },
                 "page": {
                     "location": "query"
+                },
+                "order_by": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "search": {
+                    "location": "query",
+                    "type": "string"
                 }
             }
         },
