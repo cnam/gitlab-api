@@ -27,7 +27,9 @@ class Api
         $this->client->setConfig($request_options);
 
         $tokenPlugin = new \Gitlab\Auth\Token\Plugin($this, $request_options);
+        $urlEncoder = new \Gitlab\Core\Plugin\UrlEncoder();
         $this->client->addSubscriber($tokenPlugin);
+        $this->client->addSubscriber($urlEncoder);
     }
 
     /**
