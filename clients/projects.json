@@ -22,6 +22,9 @@
                 "search": {
                     "location": "query",
                     "type": "string"
+                },
+                "archived": {
+                    "location":"query"
                 }
             }
         },
