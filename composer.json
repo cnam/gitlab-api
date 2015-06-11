@@ -14,6 +14,6 @@
         }
     },
     "require": {
-        "guzzlehttp/guzzle": "3.8.1"
+        "guzzle/guzzle": "v3.8.1"
     }
 }
