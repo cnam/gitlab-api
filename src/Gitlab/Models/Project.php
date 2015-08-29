@@ -29,6 +29,7 @@ class Project implements ResponseClassInterface
     protected $namespace;
     protected $permissions;
     protected $archive;
+    protected $avatar_url;
 
     public static function fromCommand(OperationCommand $command)
     {
@@ -405,5 +406,19 @@ class Project implements ResponseClassInterface
         $this->wiki_enabled = $wiki_enabled;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAvatarUrl()
+    {
+        return $this->avatar_url;
+    }
 
+    /**
+     * @param mixed $avatar_url
+     */
+    public function setAvatarUrl($avatar_url)
+    {
+        $this->avatar_url = $avatar_url;
+    }
 }
